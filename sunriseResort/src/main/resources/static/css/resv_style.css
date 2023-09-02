@@ -1,0 +1,17 @@
+@charset "UTF-8";
+
+/* 테이블 스타일 */
+.insert {
+  width: 500px;
+  height: 400px;
+  border-collapse: collapse;
+  margin: 0 auto; /* Center the table horizontally */
+  margin-bottom: 20px;
+}
+
+.insert td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
