@@ -6,6 +6,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
+<title>SUNRISE RESORT에 오신 것을 환영합니다</title>
 <style>
 .info {
 	width: 1050px;
@@ -25,11 +27,20 @@
 	border: 1px solid black;
 	text-align: center;
 }
+
+#loginbox {
+	float: right;
+}
 </style>
-<meta charset="UTF-8">
-<title>선라이즈 리조트 예약현황</title>
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../top.jsp"%>
 	</table>

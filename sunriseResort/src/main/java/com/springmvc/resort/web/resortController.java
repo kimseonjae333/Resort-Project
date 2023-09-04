@@ -13,38 +13,55 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.springmvc.resort.dao.ReservRepository;
 import com.springmvc.resort.domain.Reservation;
+import com.springmvc.resort.domain.User;
+import com.springmvc.resort.service.UserService;
 
 import jakarta.servlet.http.HttpServletRequest;
+import lombok.RequiredArgsConstructor;
 
 @Controller
+@RequiredArgsConstructor
 @RequestMapping(value = "/sunriseResort")
 public class resortController {
 
 	@Autowired
 	private ReservRepository reservRepository;
 	
-	//메인
+	@Autowired
+	private UserService userService;
+
+	// 메인
 	@GetMapping("/home")
-	public String home() {
+	public String home(Model model, @SessionAttribute(name = "userId", required = false) Long userId) {
+
+		User loginUser = userService.getLoginUserById(userId);
+
+		if (loginUser != null) {
+			model.addAttribute("loginId", loginUser.getLoginId());
+		} else {
+			model.addAttribute("loginId", null); // 로그인되지 않은 상태를 나타내는 값
+		}
+		
 		return "main";
 	}
-	
-	//리조트 소개
+
+	// 리조트 소개
 	@GetMapping("/introduce")
 	public String resortIntroduce() {
 		return "/resort/introduce";
 	}
-	
-	//오시는 길
+
+	// 오시는 길
 	@GetMapping("/place")
 	public String showPlace() {
 		return "/resort/place";
 	}
-	
-	//예약하기(현황 확인)
+
+	// 예약하기(현황 확인)
 	@RequestMapping("/calendar")
 	public String showCalendar(Model model) {
 
@@ -83,8 +100,8 @@ public class resortController {
 		model.addAttribute("sets", sets); // view에 뿌리기
 		return "/reservation/calendar";
 	}
-	
-	//예약하기(예약하기 페이지 들어가기)
+
+	// 예약하기(예약하기 페이지 들어가기)
 	@GetMapping("/cal_insert")
 	public String calendar_insert(Model model, HttpServletRequest req) {
 		String date = req.getParameter("date");
@@ -94,8 +111,8 @@ public class resortController {
 		model.addAttribute("roomType", roomType);
 		return "/reservation/resv_insert";
 	}
-	
-	//예약하기(예약하기)
+
+	// 예약하기(예약하기)
 	@PostMapping("/resv_insert")
 	public String reservation_insert(Model model, HttpServletRequest req) {
 		String date = req.getParameter("date"); // 날짜
@@ -129,38 +146,38 @@ public class resortController {
 		reservRepository.save(reservation);
 		return "redirect:/sunriseResort/calendar";
 	}
-	
-	//룸1(일반룸)
+
+	// 룸1(일반룸)
 	@GetMapping("/room1")
 	public String showRoom1() {
 		return "/room/room1";
 	}
-	
-	//룸2(디럭스룸)
+
+	// 룸2(디럭스룸)
 	@GetMapping("/room2")
 	public String showRoom2() {
 		return "/room/room2";
 	}
-	
-	//룸3(패밀리룸)
+
+	// 룸3(패밀리룸)
 	@GetMapping("/room3")
 	public String showRoom3() {
 		return "/room/room3";
 	}
-	
-	//주변관광지1(올드타운)
+
+	// 주변관광지1(올드타운)
 	@GetMapping("/around1")
 	public String showAround1() {
 		return "/around/around1";
 	}
-	
-	//주변관광지2(안방비치)
+
+	// 주변관광지2(안방비치)
 	@GetMapping("/around2")
 	public String showAround2() {
 		return "/around/around2";
 	}
-	
-	//주변관광지3(코코넛배)
+
+	// 주변관광지3(코코넛배)
 	@GetMapping("/around3")
 	public String showAround3() {
 		return "/around/around3";

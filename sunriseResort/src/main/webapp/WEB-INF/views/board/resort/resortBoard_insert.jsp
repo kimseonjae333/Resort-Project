@@ -20,6 +20,10 @@
 	background-color: transparent;
 	float: left;
 }
+
+#loginbox {
+	float: right;
+}
 </style>
 <script language="JavaScript">
 	function checkForm() {
@@ -41,8 +45,16 @@
 		}
 	}
 </script>
+
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../../top.jsp"%>
 	</table>

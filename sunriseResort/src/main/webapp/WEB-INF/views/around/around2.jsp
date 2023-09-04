@@ -27,9 +27,20 @@
 	max-height: 70%;
 	margin: 20px 0; /* Add margin between images */
 }
+
+#loginbox {
+	float: right;
+}
 </style>
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../top.jsp"%>
 	</table>

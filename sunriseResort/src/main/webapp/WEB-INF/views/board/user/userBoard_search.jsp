@@ -40,6 +40,10 @@
 	border: 0px;
 	align: center;
 }
+
+#loginbox {
+	float: right;
+}
 </style>
 <script language="JavaScript">
 	function checkSearch() {
@@ -59,8 +63,16 @@
 		}
 	}
 </script>
+
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../../top.jsp"%>
 	</table>
@@ -117,22 +129,26 @@
 				<div class="pagination">
 					<div class="center">
 						<c:if test="${pages.number > 0}">
-							<a href="userBoard_searchNext?search=${search}&page=${pages.number - 1}">&lt;</a>
+							<a
+								href="userBoard_searchNext?search=${search}&page=${pages.number - 1}">&lt;</a>
 						</c:if>
 
 						<c:forEach items="${pageNumbers}" var="i">
 							<c:choose>
 								<c:when test="${i eq pages.number}">
-									<a href="userBoard_searchNext?search=${search}&page=${i}" style="color: red">${i + 1}</a>
+									<a href="userBoard_searchNext?search=${search}&page=${i}"
+										style="color: red">${i + 1}</a>
 								</c:when>
 								<c:otherwise>
-									<a href="userBoard_searchNext?search=${search}&page=${i}" style="color: black">${i + 1}</a>
+									<a href="userBoard_searchNext?search=${search}&page=${i}"
+										style="color: black">${i + 1}</a>
 								</c:otherwise>
 							</c:choose>
 						</c:forEach>
 
 						<c:if test="${pages.number < pages.totalPages - 1}">
-							<a href="userBoard_searchNext?search=${search}&page=${pages.number + 1}">&gt;</a>
+							<a
+								href="userBoard_searchNext?search=${search}&page=${pages.number + 1}">&gt;</a>
 						</c:if>
 					</div>
 				</div>
@@ -140,7 +156,8 @@
 
 			<!----------------------------- 검색 + 글쓰기 버튼 -------------------------------->
 			<div class="center">
-				<form method="get" id="BoardSearchForm" onsubmit="return checkSearch()">
+				<form method="get" id="BoardSearchForm"
+					onsubmit="return checkSearch()">
 					<table width="800">
 						<tr>
 							<td style="float: right;"><input type="text" name="search"

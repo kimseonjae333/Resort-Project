@@ -24,6 +24,10 @@
 .highlight-bg {
 	background-color: #FFFFE0; /* 밝은 노란색 배경 색상 */
 }
+
+#loginbox {
+	float: right;
+}
 </style>
 <script language="JavaScript">
 	function submitForm() {
@@ -74,8 +78,16 @@
 	      editForm.style.display = "table-row";
 	   }
 </script>
+
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../../top.jsp"%>
 	</table>
@@ -143,26 +155,26 @@
 			<c:if test="${not empty item.userBoardComments}">
 				<table cellspacing="0" width="700" border="1" align="center">
 					<form method='post' id='CommentUD'>
-					<tr>
-						<td><b>작성자</b></td>
-						<td><b>내용</b></td>
-					</tr>
-					<c:forEach var="ubc" items="${item.userBoardComments}">
 						<tr>
-							<td><p align="left">
-									<input type="text" value="${ubc.writer}" class="input-field"
-										size="15" readonly></td>
-							<td><textarea rows="1" cols="300"
-									style="width: 400px; height: 30px; resize: none; overflow: auto;"
-									class="input-field" readonly>${ubc.content}</textarea> <input
-								type="button" value="수정" style="float: right;"
-								onClick="showEditForm(${ubc.id})"> <input type="button"
-								value="삭제" style="float: right;"
-								onClick="deleteComment(${ubc.id})"></td>
+							<td><b>작성자</b></td>
+							<td><b>내용</b></td>
 						</tr>
-						</form>
-						<form action="/sunriseResort/userBoard_updateComment/${ubc.id}"
-							method="post" onsubmit="return confirm('댓글을 수정하시겠습니까?');">
+						<c:forEach var="ubc" items="${item.userBoardComments}">
+							<tr>
+								<td><p align="left">
+										<input type="text" value="${ubc.writer}" class="input-field"
+											size="15" readonly></td>
+								<td><textarea rows="1" cols="300"
+										style="width: 400px; height: 30px; resize: none; overflow: auto;"
+										class="input-field" readonly>${ubc.content}</textarea> <input
+									type="button" value="수정" style="float: right;"
+									onClick="showEditForm(${ubc.id})"> <input type="button"
+									value="삭제" style="float: right;"
+									onClick="deleteComment(${ubc.id})"></td>
+							</tr>
+					</form>
+					<form action="/sunriseResort/userBoard_updateComment/${ubc.id}"
+						method="post" onsubmit="return confirm('댓글을 수정하시겠습니까?');">
 						<tr style="display: none;" class="edit-form"
 							id="edit-form-${ubc.id}">
 
@@ -176,7 +188,7 @@
 									class="input-field, highlight-bg">${ubc.content}</textarea> <input
 								type="submit" value="확인" style="float: right;"></td>
 						</tr>
-						</form>
+					</form>
 					</c:forEach>
 				</table>
 				<br />

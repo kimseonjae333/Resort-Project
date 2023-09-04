@@ -20,8 +20,13 @@
 	background-color: transparent;
 	float: left;
 }
+
 .highlight-bg {
-    background-color: #FFFFE0; /* 밝은 노란색 배경 색상 */
+	background-color: #FFFFE0; /* 밝은 노란색 배경 색상 */
+}
+
+#loginbox {
+	float: right;
 }
 </style>
 <script language="JavaScript">
@@ -47,8 +52,16 @@
 		}
 	}
 </script>
+
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../../top.jsp"%>
 	</table>
@@ -80,13 +93,15 @@
 					</tr>
 					<tr>
 						<td style="width: 80px"><b>제목</b></td>
-						<td class="highlight-bg"><textarea name="title" rows="1" cols="100"
+						<td class="highlight-bg"><textarea name="title" rows="1"
+								cols="100"
 								style="width: 95%; height: 50%; resize: none; overflow: auto;"
 								class="input-field">${item.title}</textarea></td>
 					</tr>
 					<tr>
 						<td><b>내용</b></td>
-						<td class="highlight-bg"><textarea name="content" rows="10" cols="100"
+						<td class="highlight-bg"><textarea name="content" rows="10"
+								cols="100"
 								style="width: 95%; height: 95%; resize: none; overflow: auto;"
 								class="input-field">${item.content}</textarea></td>
 					</tr>

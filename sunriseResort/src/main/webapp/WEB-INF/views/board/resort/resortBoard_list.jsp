@@ -40,6 +40,10 @@
 	border: 0px;
 	align: center;
 }
+
+#loginbox {
+	float: right;
+}
 </style>
 <script language="JavaScript">
 	function checkSearch() {
@@ -59,8 +63,16 @@
 		}
 	}
 </script>
+
 </head>
 <body>
+	<div style="width: 90%;">
+		<div id="loginbox">
+			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
+				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
+		</div>
+	</div>
 	<table>
 		<%@ include file="../../top.jsp"%>
 	</table>
@@ -130,7 +142,8 @@
 
 			<!----------------------------- 검색 + 글쓰기 버튼 -------------------------------->
 			<div class="center">
-				<form method="get" id="BoardSearchForm" onsubmit="return checkSearch()">
+				<form method="get" id="BoardSearchForm"
+					onsubmit="return checkSearch()">
 					<table width="800">
 						<tr>
 							<td style="float: right;"><input type="text" name="search"
