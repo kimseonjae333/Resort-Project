@@ -1,0 +1,39 @@
+@charset "UTF-8";
+
+table {
+	border: 0px;
+	cellpadding: 0px;
+	cellspacing: 0px;
+}
+
+td {
+	font-size: 12;
+	text-align: center;
+}
+
+.bottom_table {
+	width: 1150px;
+	height: 40px;
+	cellpadding: 0px;
+	cellspacing: 0px;
+}
+
+.blank {
+	width: 80px;
+}
+
+a:link {
+	text-decoration: none;
+}
+
+a:visitied {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+a:active {
+	text-decoration: none;
+}

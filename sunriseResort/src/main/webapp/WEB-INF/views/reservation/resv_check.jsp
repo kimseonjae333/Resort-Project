@@ -36,8 +36,16 @@
 <body>
 	<div style="width: 90%;">
 		<div id="loginbox">
-			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
-				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+			<span> <c:choose>
+					<c:when test="${empty loginId}">
+						<a href="/sunriseResort/adm_login">로그인</a>
+					</c:when>
+					<c:otherwise>
+						${loginId}님 반갑습니다! 
+						<a href="/sunriseResort/adm_logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
+			</span> | <span><a href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
 				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
 		</div>
 	</div>
@@ -45,55 +53,65 @@
 		<%@ include file="../top.jsp"%>
 	</table>
 	<div style="width: 100%; height: 50px;"></div>
-
+	<h2>내 예약 확인하기</h2>
 	<div style="width: 1050px;">
-		<form method="post" id="resvInsertForm" onsubmit="return submitForm()">
+		<c:forEach var="resv" items="${reservations}">
 			<table class="insert">
 				<tr>
 					<td style="width: 100px;"><p align="left">
 							<b>날짜</b>
 						</p></td>
-					<td><input type="text" name="date" value="${Date}" size=20;
+					<td><input type="text" name="date" value="${resv.date}" size=20;
 						style='float: left;' readonly></td>
 				</tr>
 				<tr>
 					<td><p align="left">
 							<b>룸 타입</b>
 						</p></td>
-					<td><input type="text" name="room" value="${roomType}"
+					<td><input type="text" name="room" value="${resv.room}"
 						size=20; style='float: left;' readonly></td>
 				</tr>
 				<tr>
 					<td><p align="left">
 							<b>예약자명</b>
 						</p></td>
-					<td><input type="text" name="name" value="" size=20;
-						style='float: left;'></td>
+					<td><input type="text" name="name" value="${resv.name}" size=20;
+						style='float: left;' readonly></td>
+				</tr>
+				<tr>
+					<td><p align="left">
+							<b>Tel</b>
+						</p></td>
+					<td><input type="text" name="tel" value="${resv.tel}" size=20;
+						style='float: left;' readonly></td>
+				</tr>
+				<tr>
+					<td><p align="left">
+							<b>Email</b>
+						</p></td>
+					<td><input type="text" name="email" value="${resv.email}" size=20;
+						style='float: left;' readonly></td>
 				</tr>
 				<tr>
 					<td><p align="left">
 							<b>입금자명</b>
 						</p></td>
-					<td><input type="text" name="depname" value="" size=20;
-						style='float: left;'></td>
+					<td><input type="text" name="depname" value="${resv.depname}"
+						size=20; style='float: left;' readonly></td>
 				</tr>
 				<tr>
 					<td><p align="left">
 							<b>남기실 말</b>
 						</p></td>
 					<td><textarea name="comment" rows="11" cols="100"
-							style="width: 300px; height: 50px; resize: none; overflow: auto; float: left;"></textarea>
-					</td>
+							style="width: 300px; height: 50px; resize: none; overflow: auto; float: left;"
+							readonly>${resv.comment}</textarea></td>
 				</tr>
 			</table>
-			<div class="button">
-				<input type="button" value="취소"
-					onClick="location.href='/sunriseResort/calendar'"> <input
-					type="submit" value="예약">
-			</div>
-		</form>
+			<br />
+		</c:forEach>
+
 	</div>
 	<div class="info"></div>
-
 </body>
 </html>

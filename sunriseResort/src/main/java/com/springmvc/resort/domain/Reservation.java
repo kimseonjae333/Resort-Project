@@ -22,7 +22,7 @@ public class Reservation {
 	private String date; // 예약일
 	
 	@Column(nullable = false)
-	private int room; // 방 번호
+	private String room; // 방 번호
 	
 	@Column(nullable = false)
 	private String name; // 이름
@@ -62,11 +62,11 @@ public class Reservation {
 		this.date = date;
 	}
 
-	public int getRoom() {
+	public String getRoom() {
 		return room;
 	}
 
-	public void setRoom(int room) {
+	public void setRoom(String room) {
 		this.room = room;
 	}
 
@@ -136,7 +136,7 @@ public class Reservation {
 	}
 
 	// 해당 객체를 생성할 때 여기 5개의 데이터가 들어간다.
-	public Reservation(String date, int room, String name, String tel, String email, String depname, String comment,
+	public Reservation(String date, String room, String name, String tel, String email, String depname, String comment,
 			LocalDateTime regdate, int processing) {
 		super();
 		this.date = date;

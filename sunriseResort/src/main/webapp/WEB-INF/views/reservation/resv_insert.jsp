@@ -81,8 +81,16 @@
 <body>
 	<div style="width: 90%;">
 		<div id="loginbox">
-			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
-				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+			<span> <c:choose>
+					<c:when test="${empty loginId}">
+						<a href="/sunriseResort/adm_login">로그인</a>
+					</c:when>
+					<c:otherwise>
+						${loginId}님 반갑습니다! 
+						<a href="/sunriseResort/adm_logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
+			</span> | <span><a href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
 				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
 		</div>
 	</div>
@@ -108,15 +116,26 @@
 						<td><p align="left">
 								<b>룸 타입</b>
 							</p></td>
-						<td><input type="text" name="room" value="${roomType}"
+						<td><input type="text" name="roomtype" value="${roomType}"
 							size=20; style='float: left;' readonly></td>
 					</tr>
 					<tr>
-						<td><p align="left">
-								<b><span class="required">*</span> 예약자명</b>
-							</p></td>
-						<td><input type="text" name="name" value="" size=20;
-							style='float: left;' required></td>
+						<c:choose>
+							<c:when test="${empty loginId}">
+								<td><p align="left">
+										<b><span class="required">*</span> 예약자명</b>
+									</p></td>
+								<td><input type="text" name="name" value="" size=20;
+									style='float: left;' required></td>
+							</c:when>
+							<c:otherwise>
+								<td><p align="left">
+										<b><span class="required">*</span> 예약자명</b>
+									</p></td>
+								<td><input type="text" name="name" value="${name}" size=20;
+									style='float: left;' readonly></td>
+							</c:otherwise>
+						</c:choose>
 					</tr>
 					<tr>
 						<td><p align="left">

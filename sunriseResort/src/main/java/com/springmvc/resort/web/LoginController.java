@@ -54,7 +54,7 @@ public class LoginController {
 		}
 
 		userService.join(joinRequest);
-		return "redirect:/sunriseResort/home";
+		return "admin/adm_login";
 	}
 	
 	@GetMapping("/adm_login")

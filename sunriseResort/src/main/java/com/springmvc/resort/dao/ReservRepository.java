@@ -10,4 +10,5 @@ import com.springmvc.resort.domain.Reservation;
 @Repository
 public interface ReservRepository extends JpaRepository<Reservation, Long>{
 	List<Reservation> findAllByDate(String date);
+	List<Reservation> findByName(String name);
 }

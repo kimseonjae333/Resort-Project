@@ -28,8 +28,16 @@
 <body>
 	<div style="width: 90%;">
 		<div id="loginbox">
-			<span><a href="/sunriseResort/adm_login">로그인</a></span> | <span><a
-				href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
+			<span> <c:choose>
+					<c:when test="${empty loginId}">
+						<a href="/sunriseResort/adm_login">로그인</a>
+					</c:when>
+					<c:otherwise>
+						${loginId}님 반갑습니다! 
+						<a href="/sunriseResort/adm_logout">로그아웃</a>
+					</c:otherwise>
+				</c:choose>
+			</span> | <span><a href="/sunriseResort/adm_join"> 회원가입</a></span> | <span><a
 				href="/sunriseResort/resortBoard_list"> 고객라운지</a></span>
 		</div>
 	</div>
